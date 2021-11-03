@@ -24,31 +24,37 @@ see under the methods section
 export function getAvgMPG() {
     var highway = 0;
     var city = 0;
+    var highCounter = 0;
+    var cityCounter = 0;
     for (var i = 0; i < mpg_data.length; i++) {
         highway += mpg_data[i].highway_mpg;
         city += mpg_data[i].city_mpg
+        highCounter++;
+        cityCounter++;
     }
-    let cityAvg = city/mpg_data.length;
-    let highAvg = highway/mpg_data.length;
+    let cityAvg = city/cityCounter;
+    let highAvg = highway/highCounter;
     return {cityAvg, highwayAvg}
 }
 
 export function yearStat() {
     var yearArr = [];
     for (var i = 0; i < mpg_data.length; i++) {
-        yearArr.push(mpg_data[i].year)
+        yearArr[i] = mpg_data[i].year;
     }
     return getStatistics(yearArr)
 }
 
 export function ratio() {
     var hybrid = 0;
+    var total = 0;
     for (var i = 0; i < mpg_data.length; i++) {
+        total++;
         if (array[i].hybrid == true) {
             hybrid++;
         }
     }
-    var ratioed = hybrid/mpg_data.length;
+    var ratioed = hybrid/total;
     return ratioed
 }
 

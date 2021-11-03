@@ -57,8 +57,8 @@ export const multiplyBy = (num1) => {
  *   "tenTimes" that multiplies a number by 10.
  */
 export const tenTimes = (num1) => {
-    var product = multiplyBy(10) * num1;
-    return product
+    var product = multiplyBy(10);
+    return product(num1)
 }
 
 
@@ -125,7 +125,7 @@ export const everyEven = (arr, test) => {
  *    someEven([0, 0, 0, 0, 0], x => x === 0)  <--  returns true
  */
 export const someEven = (arr, test) => {
-    for (var i = 0; i < arr.length; i++) {
+    for (var i = 0; i < arr.length; i+=2) {
         if (test(arr[i])) {
             return true
         }
@@ -160,7 +160,7 @@ export const filter = (arr, test) => {
     filtered.fail = [];
     filtered.pass = [];
     for (var i = 0; i < arr.length; i++) {
-        if (test(arr[i])) {
+        if (test(arr[i]) == true) {
             filtered.pass.push(arr[i]);
         } else {
             filtered.fail.push(arr[i]);

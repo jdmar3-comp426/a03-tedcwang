@@ -23,16 +23,14 @@ export function getSum(array) {
  * console.log(getMedian(array)); // 4.5
  */
 export function getMedian(array) {
-    array.sort(function(x, y) {
-        return x - y;
-    });
-
-    let mid = Math.floor(array.length/2);
-    if (array.length % 2) {
-        return array[mid];
+    var median = 0;
+    array.sort((a, b) => a-b);
+    if (array.length%2 == 0) {
+        median = (array[(array.length/2) - 1] + array[array.length/2])/2;
     } else {
-        return (array[half-1] + array[half])/2.0;
+        median = array[(array.length - 1)/2];
     }
+    return median
 }
 
 /**
@@ -55,14 +53,15 @@ export function getMedian(array) {
  }
  */
 export function getStatistics(array) {
-    var length = array.length;
-    var sum = getSum(array);
-    var mean = sum / length;
-    var median = getMedian(array);
-    var min = Math.min(array);
-    var max = Math.max(array);
-    var variance = variance(array, mean);
-    var std = Math.sqrt(variance);
-    return {"length": length, "sum": sum, "mean": mean, "median": median, "min": min, "max": max, "variance": variance, "standard_deviation": std}
+    var result = {};
+    result.length = array.length;
+    result.sum = getSum(array);
+    result.mean = result.sum / result.length;
+    result.median = getMedian(array);
+    result.min = Math.min(array);
+    result.max = Math.max(array);
+    result.variance = variance(array, result.mean);
+    result.standard_deviation = Math.sqrt(result.variance);
+    return result
 }
 
