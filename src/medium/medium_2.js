@@ -22,19 +22,19 @@ see under the methods section
 
 // create new functions to help with const allCarStats
 export function getAvgMPG() {
-    var highway = 0;
-    var city = 0;
+    var highwayTotal = 0;
+    var cityTotal = 0;
     var highCounter = 0;
     var cityCounter = 0;
     for (var i = 0; i < mpg_data.length; i++) {
-        highway += mpg_data[i].highway_mpg;
-        city += mpg_data[i].city_mpg
+        highwayTotal += mpg_data[i].highway_mpg;
+        cityTotal += mpg_data[i].city_mpg
         highCounter++;
         cityCounter++;
     }
-    let cityAvg = city/cityCounter;
-    let highAvg = highway/highCounter;
-    return {cityAvg, highwayAvg}
+    let city = cityTotal/cityCounter;
+    let high = highwayTotal/highCounter;
+    return {city, highway}
 }
 
 export function yearStat() {
